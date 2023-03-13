@@ -22,6 +22,14 @@ app.get('/api/get', (req,res)=>{
     })
 })
 
+app.get('/api/delete/:movieName', (req,res)=> {
+    const name = req.params.movieName
+    sqlDelete = 'DELETE FROM movie_reviews WHERE movieName = ?'
+
+    db.query(sqlDelete, name,(err,result) =>{
+        res.send(result)
+    })
+})
 app.post('/api/insert', (req,res) => {
 
     const movieName = req.body.movieName

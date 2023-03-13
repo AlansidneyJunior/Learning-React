@@ -1,5 +1,11 @@
+body {
+    background-color: rgb(112, 112, 112);
+}
 .App {
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .form {
@@ -7,12 +13,38 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 .form input {
     width: 300px;
-    height: 60px;
+    height: 70px;
     margin: 10px;
     font-size: 18px;
     text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(71, 71, 71);
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 3px;
+    
+}
+
+.movie-title{
+    font-weight: bold;
+    font-size: 22px;
+    padding: 2px;
+}
+
+.movie-review{
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 5px;
 }

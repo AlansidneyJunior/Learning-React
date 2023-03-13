@@ -13,17 +13,21 @@ function App(){
       setmovieReviewList(response.data)
       console.log(movieReviewList)
     })
-  },[])
+  },[movieReviewList])
 
   const submitReview = () => {
     Axios.post('http://localhost:3001/api/insert', {
       movieName: movieName,
       movieReview: movieReview
     }).then(()=>{
-      alert('successful insert!')
+      setmovieReviewList([...movieReviewList,{movieName: movieName, movieReview: movieReview}])
     })
   }
   
+  const handleDeleteCard = (movieName) => {
+    Axios.delete(`http://localhost:3001/api/delete/${movieName}`)
+  }
+
   return(
     <div className="App">
       <h1>CRUD Application</h1>
@@ -38,7 +42,19 @@ function App(){
         <button onClick={submitReview}>Inscrever-se</button>
       </div>
       {movieReviewList.map((movieData) => {
-        return <h3>{movieData.movieName} | Review: {movieData.movieReview}</h3>
+        return (
+          <div className="card-container">
+            <div className="movie-item">
+              <div className="movie-title">{movieData.movieName}</div>
+              <div className="movie-review">{movieData.movieReview}</div>
+            </div>
+            <div className="update-item">
+              <button onClick={() => {handleDeleteCard(movieData.movieName)}}>Delete Card</button>
+              <input type="text" placeholder="Update Review"/>
+              <button>Update review</button>
+            </div>
+          </div>
+        )
       })} 
     </div>
   )
